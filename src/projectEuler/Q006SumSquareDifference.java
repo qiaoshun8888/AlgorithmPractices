@@ -1,3 +1,4 @@
+package projectEuler;
 public class Q006SumSquareDifference {
 
 	/**
