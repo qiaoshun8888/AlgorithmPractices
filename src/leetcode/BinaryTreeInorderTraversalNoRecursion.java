@@ -2,8 +2,6 @@ package leetcode;
 
 import java.util.*;
 
-import leetcode.BinaryTreePreorderTraversalNoRecursion.TreeNode;
-
 public class BinaryTreeInorderTraversalNoRecursion {
 
 	/**
