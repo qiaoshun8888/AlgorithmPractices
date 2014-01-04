@@ -11,6 +11,6 @@ public class RunUpStaircase {
 	}
 	
 	public static void main(String [] args) {
-		System.out.println(RunUpStaircase.getWaysNumber(8));
+		System.out.println(RunUpStaircase.getWaysNumber(1));
 	}
 }
