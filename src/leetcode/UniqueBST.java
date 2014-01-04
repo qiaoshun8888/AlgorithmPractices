@@ -15,6 +15,8 @@ public class UniqueBST {
     	 /     /       \                 \
    		2     1         2                 3
 	 * 
+	 * http://en.wikipedia.org/wiki/Catalan_number
+	 * 
 	 * */
 	
 	public int numTrees(int n) {
