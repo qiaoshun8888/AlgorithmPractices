@@ -1,7 +1,5 @@
 package leetcode;
 
-import leetcode.BinaryTreeInorderTraversalNoRecursion.TreeNode;
-
 public class VerifySemmetricTreeRecursion {
 
 	/**
