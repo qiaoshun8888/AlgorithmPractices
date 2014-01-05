@@ -62,12 +62,12 @@ public class BinaryTreeLevelOrderTraversalII {
 		while (!queue.isEmpty()) {
 			TreeNodeWrapper wrapper = queue.pop();
 			stack.push(wrapper);
-			if (wrapper.node.right != null) {
-				queue.push(new TreeNodeWrapper(wrapper.node.right,
-						wrapper.level + 1));
-			}
 			if (wrapper.node.left != null) {
 				queue.push(new TreeNodeWrapper(wrapper.node.left,
+						wrapper.level + 1));
+			}
+			if (wrapper.node.right != null) {
+				queue.push(new TreeNodeWrapper(wrapper.node.right,
 						wrapper.level + 1));
 			}
 		}
@@ -91,11 +91,12 @@ public class BinaryTreeLevelOrderTraversalII {
 				list = map.get(wrapper.level);
 			}
 
-			list.add(0, wrapper.node.val);
+			list.add(wrapper.node.val);
 		}
 
 		while (level >= 0) {
 			result.add(map.get(level));
+			map.remove(level);
 			level--;
 		}
 
