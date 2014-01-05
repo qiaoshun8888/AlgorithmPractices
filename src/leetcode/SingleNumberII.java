@@ -30,7 +30,8 @@ public class SingleNumberII {
 		for (int i = 0; i < Integer.SIZE; i++) {
 			int sum = 0;
 			for (int v : A) {
-				sum += ((v & (1 << i)) > 0) ? 1 : 0;
+				sum += (((v >> i) & 1) > 0) ? 1 : 0; // using (v >> i) & 1 instead of v & (1 << i)
+				// sum += ((v & (1 << i)) > 0) ? 1 : 0; // Occur error when there is any negative value
 			}
 			sum %= 3;
 			if (sum == 1)
@@ -41,7 +42,7 @@ public class SingleNumberII {
 
 	public static void main(String[] args) {
 		SingleNumberII o = new SingleNumberII();
-		int[] vs = { 3, 3, 4, 3, 5, 5, 5 };
+		int[] vs = {-2,-2,1,1,-3,1,-3,-3,-4,-2};
 		System.out.println(o.singleNumber(vs));
 	}
 }
