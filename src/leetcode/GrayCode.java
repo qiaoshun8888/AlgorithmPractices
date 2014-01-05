@@ -14,10 +14,7 @@ public class GrayCode {
 	 * 
 	 * For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:
 	 * 
-	 * 00 - 0
-	 * 01 - 1
-	 * 11 - 3
-	 * 10 - 2
+	 * 00 - 0 01 - 1 11 - 3 10 - 2
 	 * 
 	 * Note: For a given n, a gray code sequence is not uniquely defined.
 	 * 
@@ -29,6 +26,12 @@ public class GrayCode {
 	 * 
 	 * */
 
+	/*
+	 * 以二进制为0值的格雷码为第零项，第一项改变最右边的位元，第二项改变右起第一个为1的位元的左边位元，
+	 * 第三、四项方法同第一、二项，如此反复，即可排列出n个位元的格雷码。
+	 * 
+	 * 000 001 011 010 110 111 101 100
+	 */
 	public ArrayList<Integer> grayCode(int n) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		list.add(0);
@@ -75,7 +78,7 @@ public class GrayCode {
 			list.add(val);
 			b = !b;
 		}
-
+		
 		return list;
 	}
 
