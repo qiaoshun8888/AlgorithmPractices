@@ -11,9 +11,9 @@ public class N49LongestIncreasingSubsequence {
 	 * 
 	 * e.g.
 	 * 
-	 * {2, 6, 4, 5, 1, 3}
+	 * {9, 6, 4, 5, 1, 3, 7, 8}
 	 * 
-	 * the LIS = {2, 4, 5}
+	 * the LIS = {4, 5, 7, 8}
 	 * 
 	 * */
 	
@@ -23,19 +23,18 @@ public class N49LongestIncreasingSubsequence {
 		List<List<Integer>> paths = new ArrayList<List<Integer>>();
 		List<Integer> path = new ArrayList<Integer>();
 		path.add(vs[0]);
+		paths.add(path);
 		
 		for (int i = 1; i < vs.length; i++) {
 			path = new ArrayList<Integer>();
+			path.add(vs[i]);
 			paths.add(path);
-			for (int j = 0; j <= i; j++) {
-				if (vs[i] >= vs[j]) {
+			for (int j = 0; j < i; j++) {
+				if (vs[i] > vs[j] && path.size() <= paths.get(j).size()) {
 					calledTimes++;
-					if (path.size() == 0) {
-						path.add(vs[j]);
-					}
-					else if (path.size() > 0 && vs[j] > path.get(path.size() - 1)) {
-						path.add(vs[j]);						
-					}
+					path.clear();
+					path.addAll(paths.get(j));
+					path.add(vs[i]);
 				}
 			}
 		}
@@ -64,7 +63,8 @@ public class N49LongestIncreasingSubsequence {
 	}
 	
 	public static void main(String [] args) {
-		int [] vs = {2, 6, 4, 5, 1, 3};
+		int [] vs = {9, 6, 4, 5, 1, 3, 7, 8};
+		// int [] vs = {2,6,4,5,1,3};
 		LIS(vs);
 	}
 }
