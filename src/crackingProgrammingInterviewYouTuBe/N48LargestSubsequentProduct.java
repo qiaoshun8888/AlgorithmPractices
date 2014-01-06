@@ -28,9 +28,10 @@ public class N48LargestSubsequentProduct {
 					cMax = 1;
 				}
 				else {
-					temp = cMax * vs[i];
-					cMax = cMin * vs[i];
-					cMin = temp;
+					temp = cMin;
+					cMin = cMax * vs[i];
+					cMax = temp * vs[i];
+					
 				}
 			}
 			else {
@@ -39,6 +40,8 @@ public class N48LargestSubsequentProduct {
 			}
 			
 			gMax = Math.max(gMax, cMax);
+			
+			cMax = cMax < 1 ? 1 : cMax;
 		}
 		
 		 return gMax;
@@ -93,7 +96,7 @@ public class N48LargestSubsequentProduct {
 	
 	
 	public static void main(String [] args) {
-		double [] vs = {1, -0.5, 3.0, -6, -1};
+		double [] vs = {1, -0.5, -0.5, 3.0, -6, -1};
 		// double [] vs = {0, 5, -0.5};
 		System.out.println(LSP(vs));
 		System.out.println(MaxSubsequentProduct(vs));
