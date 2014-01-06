@@ -94,6 +94,7 @@ public class Ch1_StringPermutation {
 		 *    
 		 * 		
 		 * */
+		
 		for (int i = 0; i < cc.length - start; i++) {
 			swap(cc, start, start + i);
 			stack.push((int)cc[start]);
@@ -112,7 +113,7 @@ public class Ch1_StringPermutation {
 	}
 	
 	public static void main(String [] args) {
-		String str = "abc";
+		String str = "abcd";
 		List<String> list = permutation(str);
 		System.out.println("list size is: " + list.size() + "  calledTimes: " + calledTimes);
 		for (String s : list) {
