@@ -13,7 +13,6 @@ public class Ch1_StringPermutation {
 	 * 		abc
 	 * 
 	 * Output:
-	 * 		abc  bac  cba  
 	 * 		abc  acb  bac  bca  cab  cba
 	 * 
 	 * */
