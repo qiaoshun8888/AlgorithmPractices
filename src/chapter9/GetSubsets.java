@@ -13,7 +13,6 @@ public class GetSubsets {
 		}
 		
 		// 1 2 3 -> 2 3, 1 3, 1 2
-		// 1 2 3 4 -> 2 3 4, 1 3 4, 1 2 4, 1 2 3 -> 
 		for (int i = 0; i < list.size(); i++) {
 			ArrayList<Integer> l = new ArrayList<Integer>(list);
 			l.remove(i);
@@ -53,13 +52,13 @@ public class GetSubsets {
 			list.add(i+1);
 		}
 		
-		/*
+		/**/
 		ArrayList<ArrayList<Integer>> result_list = new ArrayList<ArrayList<Integer>>();
 		subsets(list, result_list);
 		result_list.add(list);
-		*/
 		
-		ArrayList<ArrayList<Integer>> result_list = subsets2(list);
+		
+		// ArrayList<ArrayList<Integer>> result_list = subsets2(list);
 		
 		System.out.println("size:[" + result_list.size() + "] called_times: " + called_times);
 		for (ArrayList<Integer> l : result_list) {
