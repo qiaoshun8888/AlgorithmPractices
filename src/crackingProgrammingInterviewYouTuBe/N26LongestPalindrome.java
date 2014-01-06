@@ -13,11 +13,14 @@ public class N26LongestPalindrome {
 			
 			// Odd  12321 -> mid 3
 			while (left >= 0 && right < str.length()) {
-				if (isPalindrome(cc, left, right)) {
+				if (cc[left] == cc[right]) {
 					if (right - left > lp_end - lp_start) {
 						lp_start = left;
 						lp_end = right;
 					}
+				}
+				else {
+					break;
 				}
 				left--;right++;
 			}
@@ -26,11 +29,14 @@ public class N26LongestPalindrome {
 			right = mid + 1;
 			// Even 123321 -> mid 33
 			while (left >= 0 && right < str.length()) {
-				if (isPalindrome(cc, left, right)) {
+				if (cc[left] == cc[right]) {
 					if (right - left > lp_end - lp_start) {
 						lp_start = left;
 						lp_end = right;
 					}
+				}
+				else {
+					break;
 				}
 				left--;right++;
 			}
