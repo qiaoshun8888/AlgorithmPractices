@@ -7,7 +7,7 @@ public class N48LargestSubsequentProduct {
 	 * 
 	 * e.g.
 	 * 
-	 * {0.5, -2.5, 3.0, -6},
+	 * {0.5, -2.5, 3.0, -6}
 	 * 
 	 * LSP = (-2.5) * 3.0 * (-6) = 45
 	 * 
