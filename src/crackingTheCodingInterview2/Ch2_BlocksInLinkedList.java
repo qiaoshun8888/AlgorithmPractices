@@ -81,5 +81,6 @@ public class Ch2_BlocksInLinkedList {
 		Node[] nodes = { head, node2, node6 };
 
 		System.out.println(blocks(head, nodes));
+		
 	}
 }
