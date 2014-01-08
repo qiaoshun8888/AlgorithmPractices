@@ -1,7 +1,5 @@
 package crackingTheCodingInterview2;
 
-import java.util.*;
-
 public class Ch1_BigNumber2 {
 
 	/**
