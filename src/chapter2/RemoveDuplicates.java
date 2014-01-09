@@ -68,8 +68,8 @@ public class RemoveDuplicates {
 		}
 		
 		RemoveDuplicates.printLinkedList(head);
-		// head = RemoveDuplicates.removeDuplicates(head);
-		head = RemoveDuplicates.removeDuplicates2(head);
+		head = RemoveDuplicates.removeDuplicates(head);
+		// head = RemoveDuplicates.removeDuplicates2(head);
 		RemoveDuplicates.printLinkedList(head);
 	}
 }

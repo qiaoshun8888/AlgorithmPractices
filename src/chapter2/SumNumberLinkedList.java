@@ -137,7 +137,7 @@ public class SumNumberLinkedList {
 		*/
 		
 		// Generate lists	int1: 123	int2: 4567
-		int [] vs1 = {3, 4, 5}, vs2 = {7, 6, 5, 4};
+		int [] vs1 = {3, 4, 6}, vs2 = {7, 6, 5, 4};
 		// Numbers are stored in forward order
 		for (int v : vs1) {
 			MSLinkedListIntNode temp = new MSLinkedListIntNode(v);
@@ -168,7 +168,7 @@ public class SumNumberLinkedList {
 		System.out.println();
 		
 		// Sum
-		MLinkedListIntNode sum = SumNumberLinkedList.sum2(n1_head, n2_head);
+		MLinkedListIntNode sum = SumNumberLinkedList.sum(n1_head, n2_head);
 		System.out.println();
 		System.out.print("sum: \t\t");
 		while (sum != null) {
