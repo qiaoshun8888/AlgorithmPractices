@@ -68,7 +68,7 @@ public class N39LargestRectangleInHistogram {
 	}
 
 	public static void main(String[] args) {
-		int[] histos = { 2, 4, 2, 1 };// use demo example, expect 6
+		int [] histos = {3, 4, 2, 3, 4}; // use demo example, expect 6
 		System.out.println("Largest rectangle size is "
 				+ LargestRectangle(histos));
 
