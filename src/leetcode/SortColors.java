@@ -13,7 +13,6 @@ public class SortColors {
 	 * Note: You are not suppose to use the library's sort function for this
 	 * problem.
 	 * 
-	 * click to show follow up.
 	 * 
 	 * Follow up: A rather straight forward solution is a two-pass algorithm
 	 * using counting sort. First, iterate the array counting number of 0's,
