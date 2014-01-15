@@ -48,5 +48,6 @@ public class PascalsTriangleII {
 		for (int v : list) {
 			System.out.print(v + " ");
 		}
+		System.out.println();
 	}
 }
