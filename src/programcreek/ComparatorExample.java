@@ -16,7 +16,7 @@ public class ComparatorExample {
 		}
 	}
 	
-	static class ageComparator implements Comparator<Friend> {
+	static class AgeComparator implements Comparator<Friend> {
 		@Override
 		public int compare(Friend o1, Friend o2) {
 			if (o1.age > o2.age) return 1;
@@ -37,7 +37,16 @@ public class ComparatorExample {
 		list.add(f3);
 		list.add(f4);
 		
-		Collections.sort(list, new ageComparator());
+		// Ascending Order
+		Collections.sort(list, new AgeComparator());
+		
+		for (Friend f : list) {
+			System.out.println(f);
+		}
+		System.out.println();
+		
+		// Descending Order
+		Collections.sort(list, Collections.reverseOrder(new AgeComparator()));
 		
 		for (Friend f : list) {
 			System.out.println(f);
