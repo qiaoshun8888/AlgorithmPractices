@@ -11,6 +11,8 @@ public class LongestPalindromeSubstring {
 	
 	// abcccba
 	public static String longestPalindromeNaive(String s) {
+		if (s == null || s.length() <= 1) return s;
+		
 		int gStart = 0, gEnd = 0;
 		char [] cc = s.toCharArray();
 		for (int i = 0; i < cc.length - 1; i++) {
@@ -29,13 +31,15 @@ public class LongestPalindromeSubstring {
 	
 	// abcccba
 	public static String longestPalindromeImprove(String s) {
+		if (s == null || s.length() <= 1) return s;
+		
 		int gStart = 0, gEnd = 0, left = 0, right = 0;
 		char [] cc = s.toCharArray();
 		for (int i = 0; i < cc.length; i++) {
 			left = i; right = i;
 			
 			while (left >= 0 && right < cc.length) {
-				if (!isPalindrome(cc, left, right)) break;
+				if (cc[left] != cc[right]) break;
 				left--; right++;
 			}
 			
@@ -45,7 +49,7 @@ public class LongestPalindromeSubstring {
 			
 			left = i; right = i + 1;
 			while (left >= 0 && right < cc.length) {
-				if (!isPalindrome(cc, left, right)) break;
+				if (cc[left] != cc[right]) break;
 				left--; right++;
 			}
 			
