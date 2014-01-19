@@ -1,4 +1,4 @@
-package programcreek;
+package programcreek.top10InterviewQuestions.stringArray;
 
 import java.util.*;
 
