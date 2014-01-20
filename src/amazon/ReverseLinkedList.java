@@ -1,6 +1,6 @@
 package amazon;
 
-import myUtils.LinkedNodeUtils;
+import myUtils.LinkedListUtils;
 import myUtils.datastructure.LinkedNode;
 
 public class ReverseLinkedList {
@@ -42,9 +42,9 @@ public class ReverseLinkedList {
 	
 	public static void main(String[] args) {
 		int [] vs = {1, 3, 5, 7};
-		LinkedNode head = LinkedNodeUtils.generateLinkedNode(vs);
+		LinkedNode head = LinkedListUtils.generateLinkedNode(vs);
 		// head = reverseRecursively(head);
 		head = reverseIteratively(head);
-		LinkedNodeUtils.print(head);
+		LinkedListUtils.print(head);
 	}
 }

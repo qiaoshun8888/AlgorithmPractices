@@ -2,7 +2,7 @@ package myUtils;
 
 import myUtils.datastructure.LinkedNode;
 
-public class LinkedNodeUtils {
+public class LinkedListUtils {
 
 	public static LinkedNode generateLinkedNode (int [] vs) {
 		if (vs == null || vs.length == 0) return null;
