@@ -1,4 +1,4 @@
-package programcreek.top10InterviewQuestions.tree;
+package leetcode;
 
 public class ValidateBinarySearchTree {
 
@@ -13,7 +13,7 @@ public class ValidateBinarySearchTree {
 	 * be binary search trees.
 	 * 
 	 * */
-
+	
 	static class TreeNode {
 		int val;
 		TreeNode left;
@@ -31,7 +31,7 @@ public class ValidateBinarySearchTree {
 	private boolean isValidBST(TreeNode root, int min, int max) {
 		if (root == null) return true;
 		
-		if (root.val <= min || root.val >= max) return false;
+		if (root.val <= min && root.val >= max) return false;
 		
 		return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
 	}
