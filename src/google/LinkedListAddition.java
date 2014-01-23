@@ -2,6 +2,8 @@ package google;
 
 import java.util.*;
 
+import org.junit.Ignore;
+
 import myUtils.LinkedListUtils;
 import myUtils.datastructure.LinkedNode;
 
@@ -119,7 +121,7 @@ public class LinkedListAddition {
 		return head;
 	}
 	
-	// useless
+	@Ignore
 	private static int size(LinkedNode n) {
 		int size = 0;
 		while (n != null) {
