@@ -11,6 +11,7 @@ public class CircularLinkedList {
 	 * Given a circular linked list, implement an algorithm which returns the
 	 * node at the beginning of the loop.
 	 * 
+	 * 
 	 * */
 	
 	public static boolean isCircularLinkedList(LinkedNode head) {
