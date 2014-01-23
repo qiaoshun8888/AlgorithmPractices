@@ -2,6 +2,18 @@ package myUtils;
 
 import myUtils.datastructure.TreeNode;
 
+/**
+	TreeUtils.java
+	
+	Description: 
+		Features:
+			1. Generate a Binary Tree from a given array
+			2. Print Binary Tree graph
+	
+	@author John Qiao <qiaoshun8888@gmail.com>
+	Date: Jan 22, 2014
+*/
+
 public class TreeUtils {
 
 	/**
