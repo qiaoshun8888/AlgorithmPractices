@@ -36,7 +36,8 @@ public class CheckBinaryTreeIsBalance {
 	}
 	
 	public static void main(String[] args) {
-		int [] vs = {-1, 1, 
+		int [] vs = {-1,
+				        1, 
 				      -1, 3, 
 				  -1, -1, -1, 6, 
 		  -1, -1, -1, -1, -1, -1, 2, -1};
