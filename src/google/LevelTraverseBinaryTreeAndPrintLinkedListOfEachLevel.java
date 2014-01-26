@@ -65,6 +65,27 @@ public class LevelTraverseBinaryTreeAndPrintLinkedListOfEachLevel {
 		return result;
 	}
 	
+	public static List<LinkedList<TreeNode>> traversalIterativelyImprove(TreeNode root) {
+		List<LinkedList<TreeNode>> result = new LinkedList<LinkedList<TreeNode>>();
+		if (root == null) return result;
+		
+		LinkedList<TreeNode> parents = new LinkedList<TreeNode>();
+		
+		parents.offer(root);
+		
+		while (!parents.isEmpty()) {
+			result.add(parents);
+			LinkedList<TreeNode> children = new LinkedList<TreeNode>();
+			for (TreeNode n : parents) {
+				if (n.left != null) children.add(n.left);
+				if (n.right != null) children.add(n.right);
+			}
+			parents = children;
+		}
+		
+		return result;
+	}
+	
 	
 	public static List<LinkedList<TreeNode>> traversalRecursively(TreeNode root) {
 		List<LinkedList<TreeNode>> result = new LinkedList<LinkedList<TreeNode>>();
@@ -100,10 +121,39 @@ public class LevelTraverseBinaryTreeAndPrintLinkedListOfEachLevel {
 		}
 	}
 	
+	public static List<LinkedList<TreeNode>> traversalRecursivelyImprove(TreeNode root) {
+		List<LinkedList<TreeNode>> result = new LinkedList<LinkedList<TreeNode>>();
+		if (root == null) return result;
+		
+		traversalRecursivelyImproveHelper(root, 1, result);
+		
+		return result;
+	}
+	private static void traversalRecursivelyImproveHelper(TreeNode node, int level, List<LinkedList<TreeNode>> result) {
+		LinkedList<TreeNode> temp = null;
+		if (result.size() >= level) {
+			temp = result.get(level - 1);
+		}
+		else {
+			temp = new LinkedList<TreeNode>();
+			result.add(temp);
+		}
+		
+		temp.add(node);
+		
+		if (node.left != null) {
+			traversalRecursivelyImproveHelper(node.left, level + 1, result);
+		}
+		if (node.right != null) {
+			traversalRecursivelyImproveHelper(node.right, level + 1, result);
+		}
+	}
+	
 	public static void main(String[] args) {
 		int [] vs = {-1,1,2,3,4,5,6,7};
 		TreeNode root = TreeUtils.generateBinaryTree(vs);
 		
+		System.out.println(" === Iteratively ===");
 		List<LinkedList<TreeNode>> result = traversalIteratively(root);
 		for (LinkedList<TreeNode> list : result) {
 			System.out.println(list);
@@ -111,9 +161,27 @@ public class LevelTraverseBinaryTreeAndPrintLinkedListOfEachLevel {
 		
 		System.out.println();
 		
+		System.out.println(" === Iteratively Improve ===");
+		result = traversalIterativelyImprove(root);
+		for (LinkedList<TreeNode> list : result) {
+			System.out.println(list);
+		}
+		
+		System.out.println();
+		
+		System.out.println(" === Recursively ===");
 		result = traversalRecursively(root);
 		for (LinkedList<TreeNode> list : result) {
 			System.out.println(list);
 		}
+		
+		System.out.println();
+		
+		System.out.println(" === Recursively Improve ===");
+		result = traversalRecursivelyImprove(root);
+		for (LinkedList<TreeNode> list : result) {
+			System.out.println(list);
+		}
+		
 	}
 }
