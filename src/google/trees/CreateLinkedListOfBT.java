@@ -1,4 +1,4 @@
-package google;
+package google.trees;
 
 import java.util.ArrayList;
 import java.util.HashMap;

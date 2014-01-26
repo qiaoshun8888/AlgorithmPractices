@@ -1,4 +1,4 @@
-package google;
+package google.linkedlists;
 
 import myUtils.LinkedListUtils;
 import myUtils.datastructure.LinkedNode;

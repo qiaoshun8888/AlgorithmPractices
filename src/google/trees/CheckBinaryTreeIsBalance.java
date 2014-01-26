@@ -1,4 +1,4 @@
-package google;
+package google.trees;
 
 import myUtils.TreeUtils;
 import myUtils.datastructure.TreeNode;

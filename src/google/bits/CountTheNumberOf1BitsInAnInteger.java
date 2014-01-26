@@ -1,4 +1,4 @@
-package google;
+package google.bits;
 
 /**
  * CountTheNumberOf1BitsInAnInteger.java

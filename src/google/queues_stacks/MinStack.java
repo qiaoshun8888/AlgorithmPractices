@@ -1,4 +1,4 @@
-package google;
+package google.queues_stacks;
 
 /**
  * MinStack.java
