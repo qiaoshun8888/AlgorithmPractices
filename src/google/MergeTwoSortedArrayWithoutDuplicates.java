@@ -57,7 +57,8 @@ public class MergeTwoSortedArrayWithoutDuplicates {
 		if (vs1 == null) return vs2;
 		if (vs2 == null) return vs1;
 		
-		// We assume that vs1 is the longer one.
+		// *** We assume that vs1 is the longer one.
+		
 		// binary search vs2[i] in vs1 for i from 0 to vs2.length - 1
 		int [] vs3 = new int[vs1.length + vs2.length];
 		int length = 0, i = 0;
