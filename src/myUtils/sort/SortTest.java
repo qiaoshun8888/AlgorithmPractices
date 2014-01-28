@@ -26,7 +26,10 @@ public class SortTest {
 //		 SelectionSort.sort(vs);
 		
 		// Insertion Sort
-		InsertionSort.sort(vs);
+//		InsertionSort.sort(vs);
+		
+		// Merge Sort
+		MergeSort.sort(vs);
 		
 		for (int v : vs) {
 			System.out.print(v + " ");
