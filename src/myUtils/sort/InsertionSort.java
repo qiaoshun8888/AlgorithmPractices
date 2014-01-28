@@ -1,7 +1,7 @@
 package myUtils.sort;
 
 /**
- *	SelectSort.java
+ *	InsertionSort.java
  *
  *	Description: 
  *
@@ -9,7 +9,7 @@ package myUtils.sort;
  *	Date: Jan 28, 2014
  */
 
-public class SelectionSort extends SortBase {
+public class InsertionSort extends SortBase {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void sort(Object[] a) {
@@ -18,12 +18,10 @@ public class SelectionSort extends SortBase {
 				
 		if (a == null || a.length <= 1) return;
 		
-		for (int i = 0; i < a.length - 1; i++) {
-			for (int j = i + 1; j < a.length; j++) {
+		for (int i = 0; i < a.length; i++) {
+			for (int j = i - 1; j >= 0 && ((Comparable)a[j]).compareTo(a[j + 1]) > 0; j--) {
 				calledTimes++;
-				if (((Comparable)a[i]).compareTo(a[j]) > 0) {
-					swap(a, i, j);
-				}
+				swap(a, j, j + 1);
 			}
 		}
 		
