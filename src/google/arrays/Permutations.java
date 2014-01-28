@@ -12,6 +12,8 @@ import java.util.*;
 
 public class Permutations {
 
+	private static int calledTimes = 0;
+	
 	/**
 	 * Input: abc
 	 * Output:

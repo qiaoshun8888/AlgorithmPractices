@@ -97,7 +97,7 @@ public class N04PrintAllValidParenthesis {
 	public static void getCombinationsRecursively(int left_remain, int right_remain, String s) {
 		called_times += s.length();
 		if (right_remain == 0) {
-			System.out.println(s);
+			System.out.print(s + " ");
 			return;
 		}
 		if (left_remain > 0) {
@@ -114,7 +114,7 @@ public class N04PrintAllValidParenthesis {
 	public static void getCombinationsRecursively2(int n, int open, int close, String s) {
 		called_times += s.length();
 		if (close == n) {
-			System.out.println(s);
+			System.out.print(s + " ");
 			return;
 		}
 		if (open < n) getCombinationsRecursively2(n, open + 1, close, s + "(");
@@ -122,18 +122,18 @@ public class N04PrintAllValidParenthesis {
 	}
 	
 	public static void main(String [] args) {
-		int N = 2;
+		int N = 3;
 		getCombinations(N);
 		System.out.println("called_times: " + called_times);
 		called_times = 0;
 		
 		System.out.println();
 		getCombinationsRecursively(N, N, "");
-		System.out.println("called_times: " + called_times);
+		System.out.println("\ncalled_times: " + called_times);
 		called_times = 0;
 		
 		System.out.println();
 		getCombinationsRecursively2(N, 0, 0, "");
-		System.out.println("called_times: " + called_times);
+		System.out.println("\ncalled_times: " + called_times);
 	}
 }

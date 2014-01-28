@@ -89,7 +89,7 @@ public class RepresentNCents {
 	}
 	
 	public static void main(String[] args) {
-		int cents = 1000;
+		int cents = 10000;
 		System.out.println(count(cents));
 		System.out.println("CalledTimes: " + calledTimes);
 		

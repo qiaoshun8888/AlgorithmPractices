@@ -13,6 +13,8 @@ import java.util.*;
 
 public class ValidCombinationOfParentheses {
 
+	private static int calledTimes = 0;
+	
 	/**
 	 * n = 3	((( + )))
 	 * 
@@ -53,6 +55,7 @@ public class ValidCombinationOfParentheses {
 		List<Integer> list = new ArrayList<Integer>(stack);
 		StringBuilder sb = new StringBuilder();
 		for (int v : list) {
+			calledTimes++;
 			sb.append((char)v);
 		}
 		result.add(sb.toString());
@@ -61,9 +64,9 @@ public class ValidCombinationOfParentheses {
 	public static void main(String[] args) {
 		int n = 3;
 		List<String> result = parentheses(n);
-		System.out.println("Size: " + result.size() + "\n");
+		System.out.println("Size: " + result.size() + " calledTimes: " + calledTimes + "\n");
 		for (String s : result) {
-			System.out.println(s);
+			System.out.print(s + " ");
 		}
 	}
 }
