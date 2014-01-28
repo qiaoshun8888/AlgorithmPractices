@@ -32,14 +32,4 @@ public class BubbleSort extends SortBase {
 		
 		runTime = System.currentTimeMillis() - runTime;
 	}
-	
-	public static void main(String[] args) {
-		Integer [] vs = {2, 5, 1, -7};
-		sort(vs);
-		for (int v : vs) {
-			System.out.print(v + " ");
-		}
-		System.out.println();
-		System.out.println("calledTimes: " + calledTimes + ", runTime: " + runTime + "ms");
-	}
 }
