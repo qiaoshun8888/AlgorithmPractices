@@ -34,10 +34,19 @@ public class TreeUtils {
 	private static void generateBinaryTreeHelper(TreeNode root, int [] vs, int index) {
 		int left = index * 2;
 		int right = left + 1;
-		if (left >= vs.length || right >= vs.length) return;
-		int vl = vs[left], vr = vs[right];
-		root.left = vl == -1 ? null : new TreeNode(vl);
-		root.right = vr == -1 ? null : new TreeNode(vr);
+
+		if (left >= vs.length) return;
+		else {
+			int vl = vs[left];
+			root.left = vl == -1 ? null : new TreeNode(vl);			
+		}
+		
+		if (right >= vs.length) return;
+		else {
+			int vr = vs[right];
+			root.right = vr == -1 ? null : new TreeNode(vr);			
+		}
+		
 		if (root.left != null) generateBinaryTreeHelper(root.left, vs, left);
 		if (root.right != null) generateBinaryTreeHelper(root.right, vs, right);
 	}
