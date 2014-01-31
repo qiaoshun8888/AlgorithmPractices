@@ -1,4 +1,4 @@
-package google.arrays;
+package google.binarysearch;
 
 import myUtils.TreeUtils;
 import myUtils.datastructure.TreeNode;
