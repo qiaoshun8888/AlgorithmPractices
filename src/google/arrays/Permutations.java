@@ -34,7 +34,6 @@ public class Permutations {
 	private static void permutationsHelper(char [] cc, int start, Stack<Integer> stack, List<String> result) {
 		if (stack.size() == cc.length) {
 			List<Integer> list = new ArrayList<Integer>(stack);
-			Collections.reverse(list);
 			StringBuilder sb = new StringBuilder();
 			for (int v : list) {
 				sb.append((char)v);
@@ -60,7 +59,7 @@ public class Permutations {
 	}
 	
 	public static void main(String[] args) {
-		String str = "abcd";
+		String str = "abc";
 		List<String> result = permutations(str);
 		System.out.println("Size: " + result.size() + "\n");
 		for (String s : result) {
