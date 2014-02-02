@@ -1,4 +1,4 @@
-package google.arrays;
+package google.binarysearch;
 
 /**
  * FindKthLargestNumberInTwoSortedArray.java
