@@ -32,6 +32,9 @@ public class KLargestElementInArray {
 		for (int v : kLargestElements(vs, k)) {
 			System.out.print(v + " ");
 		}
+		
+		System.out.println();
+		System.out.println(0xFF);
 	}
 	
 	static class MinPQComparator implements Comparator<Integer>{
