@@ -30,8 +30,8 @@ public class N49LongestIncreasingSubsequence {
 			path.add(vs[i]);
 			paths.add(path);
 			for (int j = 0; j < i; j++) {
+				calledTimes++;
 				if (vs[i] > vs[j] && path.size() <= paths.get(j).size()) {
-					calledTimes++;
 					path.clear();
 					path.addAll(paths.get(j));
 					path.add(vs[i]);

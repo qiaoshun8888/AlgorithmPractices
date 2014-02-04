@@ -15,7 +15,7 @@ public class BestTimeToBuyAndSellStockII {
 	 * 
 	 * */
 	
-	// 2, 5, 1, 7, 8, 3
+	// 2, 5, 3, 7, 6, 8, 3
 	public static int maxProfit(int [] prices) {
 		if (prices == null || prices.length == 0) return 0;
 		
@@ -36,7 +36,7 @@ public class BestTimeToBuyAndSellStockII {
 	}
 	
 	public static void main(String[] args) {
-		int [] vs = {2, 5, 1, 7, 8}; // 3 + 7
+		int [] vs = {2, 5, 3, 7, 6, 8, 3}; // 3 + 7
 		System.out.println(maxProfit(vs));
 	}
 }
