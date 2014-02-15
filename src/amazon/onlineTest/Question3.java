@@ -104,6 +104,6 @@ public class Question3 {
 //		};
 
 		System.out.print("Path: ");
-		System.out.println(minimumPointOnMaximalPath2(matrix));
+		System.out.println("minimum value along the path: " + minimumPointOnMaximalPath2(matrix));
 	}
 }
