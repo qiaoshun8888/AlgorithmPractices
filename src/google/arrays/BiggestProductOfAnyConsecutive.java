@@ -52,7 +52,14 @@ public class BiggestProductOfAnyConsecutive {
 //		int [] vs = {1, 5, -10, 3, 7 , -1 , 0};  // 1050
 //		int [] vs = {1, 5, -10, -2, 0, 2, 2}; // 100
 //		int [] vs = {1, 5, -1, 2, -1, 4}; // 40
-		int [] vs = {1, 5, -10, 20, 40}; // 800
+//		int [] vs = {1, 5, -10, 20, 40}; // 800
+		int [] vs = {1, 5, -10, 3, 7, 0, 100, 2, -3};
 		System.out.println(cul(vs));
+		
+		
+		int i = 5;
+		System.out.println(~i + 1);
+		
+		System.out.println(1 << 31);
 	}
 }

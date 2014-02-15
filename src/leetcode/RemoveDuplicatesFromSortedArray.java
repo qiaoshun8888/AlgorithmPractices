@@ -25,12 +25,16 @@ public class RemoveDuplicatesFromSortedArray {
 	    i = 4  1, 2, 3, 5, 5, 1, 7, 9  (duplicatesLength = 2)
 	    i = 5  1, 2, 3, 5, 7, 5, 1, 9  (duplicatesLength = 2)
 	 */
+	private static int calledTimes = 0;
+	
 	public int removeDuplicates(int[] A) {
 		if (A.length < 2)
 			return A.length;
 
 		int newLength = A.length, duplicatesLength = 0;
 		for (int i = 0; i < A.length - 1; i++) {
+			System.out.print(i + " ");
+			calledTimes++;
 			moveEndToFront(A, i - duplicatesLength + 1, i + 1);
 			if (A[i - duplicatesLength] == A[i - duplicatesLength + 1]) {
 				newLength--;
@@ -47,5 +51,12 @@ public class RemoveDuplicatesFromSortedArray {
 			end--;
 		}
 		vs[start] = endVal;
+	}
+	
+	public static void main(String[] args) {
+		int [] vs = {1, 1, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 9, 9};
+		RemoveDuplicatesFromSortedArray o = new RemoveDuplicatesFromSortedArray();
+		System.out.println(o.removeDuplicates(vs));
+		System.out.println("calledTimes: " + calledTimes);
 	}
 }
