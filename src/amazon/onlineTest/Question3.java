@@ -75,6 +75,7 @@ public class Question3 {
 	}
 
 	public static void main(String[] args) {
+		// re-search case
 		int[][] matrix = { 
 				{ 9, 9, 9 , 9}, 
 				{ 8, 7, 8 , 1}, 
@@ -82,12 +83,14 @@ public class Question3 {
 				{ 9, 9, 8 , 9},
 		};
 		
+		// normal case
 //		int[][] matrix = {
 //				{ 5, 1, 6 }, 
 //				{ 4, 5, 8 }, 
 //				{ 2, 3, 9 },
 //		};
-//		
+		
+		// large case
 //		int[][] matrix = {
 //				{ 5, 1, 6 }, 
 //				{ 4, 5, 8 }, 
