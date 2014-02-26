@@ -16,6 +16,27 @@ public class RemoveDuplicatesFromSortedArray {
 	 * Your function should return length = 2, and A is now [1,2].
 	 * 
 	 * */
+	
+	// Author: Xin Zhou
+    // i       0 1 2 3 4 5 6 7 8 9 10
+    // i = 1:  0 1 1 1 2 3 5 5 5 7 9    
+    // i = 4:  0 1 2 1 1 3 5 5 5 7 9    deleteCount = 2
+    // i = 5:  0 1 2 3 5 ..
+    public int removeDuplicates(int[] A) {
+        if (A.length <= 1) return A.length;
+        int tmp = A[0], deleteCount = 0;
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] != tmp) {
+                if (deleteCount > 0) { // move ahead deleteCount, delete
+                    A[i - deleteCount] = A[i];
+                }
+            } else {
+                deleteCount++;
+            }
+            tmp = A[i];
+        }
+        return A.length - deleteCount;
+    }
 
 	/*
 	    i = 0  1, 1, 2, 3, 5, 5, 7, 9  (duplicatesLength = 0)
@@ -27,7 +48,7 @@ public class RemoveDuplicatesFromSortedArray {
 	 */
 	private static int calledTimes = 0;
 	
-	public int removeDuplicates(int[] A) {
+	public int removeDuplicates2(int[] A) {
 		if (A.length < 2)
 			return A.length;
 
