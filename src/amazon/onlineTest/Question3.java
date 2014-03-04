@@ -8,6 +8,8 @@ package amazon.onlineTest;
  * @author John Qiao <qiaoshun8888@gmail.com> Date: Feb 15, 2014
  */
 
+import java.util.*;
+
 public class Question3 {
 
 	/**
@@ -27,24 +29,35 @@ public class Question3 {
 		int cols = matrix[0].length, rows = matrix.length, min = Integer.MAX_VALUE;
 		int i = 0, j = 0;
 		
+		Set<String> path = new HashSet<String>();
+		
 		int x = 0, y = 0, g_min = Integer.MIN_VALUE;
 		
+		int timeout = 0;
+		
 		while (i < rows || j < cols) {
+			if (timeout++ > 20) break;
+			
 			int v = matrix[i][j];
 			
+			path.add(i + "," + j);
+			
 			// System.out.print(matrix[i][j] + " " + " (" + i + ", " + j + ")");
-			System.out.print(matrix[i][j] + " ");
+			System.out.println(v + " (" + i + "," + j + ")");
 
 			// keep tracking the min value in the path
 			if (v < min) min = v;
 			
 			if (min < g_min) {
 				// re-search
-				min = g_min;
 				i = x;
 				j = y;
-				System.out.println("### " + min + "(" + x + "  " + y + ")");
-				continue;
+				System.out.println("Back to: " + "(" + i + "," + j + ")  min: " + min + " g_min: " + g_min);
+				// reset min
+				min = g_min; // Integer.MAX_VALUE;
+				// reset g_min
+				g_min = Integer.MIN_VALUE;
+				// continue;
 			}
 			
 			if (i == rows - 1 && j == cols - 1) {
@@ -53,21 +66,23 @@ public class Question3 {
 			}
 
 			int right_v = Integer.MIN_VALUE, bottom_v = Integer.MIN_VALUE;
-			if (i + 1 < rows) right_v = matrix[i + 1][j];
-			if (j + 1 < cols) bottom_v = matrix[i][j + 1];
+			if (j + 1 < cols) right_v = matrix[i][j + 1];
+			if (i + 1 < rows) bottom_v = matrix[i + 1][j];
 			if (right_v > bottom_v) {
-				if (bottom_v >= g_min) {
-					x = i; y = j + 1;
+				if (bottom_v > g_min) {
+					System.out.println("bottom_v(" + bottom_v + ") > g_min(" + g_min + ") -> " + bottom_v);
+					x = i + 1; y = j;
 					g_min = bottom_v;
 				}
-				i++;
+				j++;
 			}
 			else {
-				if (right_v >= g_min) {
-					x = i + 1; y = j;
+				if (right_v > g_min) {
+					System.out.println("right_v(" + right_v + ") > g_min(" + g_min + ") -> " + right_v);
+					x = i; y = j + 1;
 					g_min = right_v;
 				}
-				j++;
+				i++;
 			}
 		}
 
@@ -75,13 +90,21 @@ public class Question3 {
 	}
 
 	public static void main(String[] args) {
-		// re-search case
+		// re-search case 2
 		int[][] matrix = { 
-				{ 9, 9, 9 , 9}, 
-				{ 8, 7, 8 , 1}, 
-				{ 9, 9, 8 , 1},
-				{ 9, 9, 8 , 9},
+				{ 9, 9, 9 , 1}, 
+				{ 8, 7, 1 , 1}, 
+				{ 9, 9, 1 , 1},
+				{ 9, 9, 9 , 9},
 		};
+		
+		// re-search case 1
+//		int[][] matrix = { 
+//				{ 9, 9, 9 , 9}, 
+//				{ 8, 7, 8 , 1}, 
+//				{ 9, 9, 8 , 1},
+//				{ 9, 9, 8 , 9},
+//		};
 		
 		// normal case
 //		int[][] matrix = {

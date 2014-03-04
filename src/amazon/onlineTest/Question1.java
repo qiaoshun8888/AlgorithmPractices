@@ -31,6 +31,7 @@ public class Question1 {
 	 * big-O run time complexity of your solution. Justify your answer. Identify
 	 * any additional data structures you used and justify why you used them.
 	 * Only provide your best answer to each part of the question.
+	 * 
 	 * */
 	
 	public static List<Integer> calculateWindowSums(List<Integer> list, int windowSize) {
