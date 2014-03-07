@@ -44,7 +44,7 @@ public class RandomArrayGeneration {
 	
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
-			int[] vs = generate(5);
+			int[] vs = generate(3);
 			for (int v : vs) System.out.print(v + " ");
 			System.out.println();
 		}
