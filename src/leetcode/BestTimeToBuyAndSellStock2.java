@@ -12,6 +12,10 @@ public class BestTimeToBuyAndSellStock2 {
 	 * the same time (ie, you must sell the stock before you buy again).
 	 * 
 	 * */
+	
+	private class Node {
+		
+	}
 
 	public int maxProfit(int[] prices) {
 		if (prices.length == 0)
