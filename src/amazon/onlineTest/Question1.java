@@ -40,12 +40,28 @@ public class Question1 {
 		
 		if (list == null || windowSize == 0) return result;
 		
+		int sum = Integer.MIN_VALUE;
+		
 		for (int i = 0; i <= list.size() - windowSize; i++) {
-			int v  = 0;
+			/*
 			for (int j = i; j < i + windowSize; j++) {
 				v += list.get(j);
 			}
-			result.add(v);
+			*/
+			
+			// for the first iteration
+			if (sum == Integer.MIN_VALUE) {
+				sum = 0;
+				for (int j = 0; j < windowSize; j++) {
+					sum += list.get(j);
+				}				
+			}
+			else {
+				sum -= list.get(i - 1); // remove old value
+				sum += list.get(i + windowSize - 1); // add new value
+			}
+			
+			result.add(sum);
 		}
 		
 		return result;
@@ -58,7 +74,7 @@ public class Question1 {
 			list.add(v);
 		}
 		
-		List<Integer> result = calculateWindowSums(list, 3);
+		List<Integer> result = calculateWindowSums(list, 2);
 		
 		for (int v : result) {
 			System.out.print(v + " ");
