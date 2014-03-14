@@ -40,26 +40,22 @@ public class Question1 {
 		
 		if (list == null || windowSize == 0) return result;
 		
-		int sum = Integer.MIN_VALUE;
+		int sum = 0;
 		
-		for (int i = 0; i <= list.size() - windowSize; i++) {
+		for (int j = 0; j < windowSize; j++) {
+			sum += list.get(j);
+		}
+		
+		result.add(sum);
+		
+		for (int i = 1; i <= list.size() - windowSize; i++) {
 			/*
 			for (int j = i; j < i + windowSize; j++) {
 				v += list.get(j);
 			}
 			*/
-			
-			// for the first iteration
-			if (sum == Integer.MIN_VALUE) {
-				sum = 0;
-				for (int j = 0; j < windowSize; j++) {
-					sum += list.get(j);
-				}				
-			}
-			else {
-				sum -= list.get(i - 1); // remove old value
-				sum += list.get(i + windowSize - 1); // add new value
-			}
+			sum -= list.get(i - 1); // remove old value
+			sum += list.get(i + windowSize - 1); // add new value
 			
 			result.add(sum);
 		}
