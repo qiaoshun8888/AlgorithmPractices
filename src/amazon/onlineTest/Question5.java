@@ -44,13 +44,11 @@ public class Question5 {
 		
 		// calculate the distance from each point to the original
 		PriorityQueue<Point> closestPoints = new PriorityQueue<Point>(k);
-		Point minPoint = new Point(0, 0);
 		
 		for (int i = 0; i < myList.length; i++) {
 			// if current point's distance less than minPoint's
 			// or PriorityQueue is not full
-			if (myList[i].compareTo(minPoint) < 0 || closestPoints.size() < k) {
-				minPoint = myList[i];				
+			if (closestPoints.size() < k || myList[i].compareTo(closestPoints.peek()) < 0) {
 				closestPoints.add(myList[i]);
 			}
 		}
