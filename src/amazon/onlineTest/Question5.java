@@ -46,8 +46,8 @@ public class Question5 {
 		PriorityQueue<Point> closestPoints = new PriorityQueue<Point>(k);
 		
 		for (int i = 0; i < myList.length; i++) {
-			// if current point's distance less than minPoint's
-			// or PriorityQueue is not full
+			// if PriorityQueue is not full
+			// or current point's distance less than the max point in the PQ
 			if (closestPoints.size() < k || myList[i].compareTo(closestPoints.peek()) < 0) {
 				closestPoints.add(myList[i]);
 			}
