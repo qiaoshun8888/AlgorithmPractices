@@ -1,5 +1,7 @@
 package myUtils;
 
+import java.util.Arrays;
+
 import myUtils.datastructure.TreeNode;
 
 /**
@@ -17,40 +19,152 @@ import myUtils.datastructure.TreeNode;
 public class TreeUtils {
 
 	/**
-	 * {-1, 1, 2, 3, #, 4, #, 5}
+	 * Generate a binary tree based on the given array. 
+	 * (!important: using '-1' to indicate null node)
 	 * 
-	 * 			 1
+	 * @param int[] vs: an integer array
+	 * 
+	 * 
+	 * {0, 1, 2, 3, -1, 4, -1}
+	 * 
+	 * 			 0
 	 * 		   /  \
-	 *        2    3
+	 *        1    2
 	 *       / \  / \
-	 *      #  4 #   5
+	 *      3  # 4   #
 	 * */
-	public static TreeNode generateBinaryTree(int [] vs) {
-		if (vs.length == 0) return null;
-		TreeNode root = new TreeNode(vs[1]);
-		generateBinaryTreeHelper(root, vs, 1);
+	public static TreeNode generateBinaryTree(int[] vs) {
+		if (vs == null || vs.length == 0) return null;
+		TreeNode root = new TreeNode(vs[0]);
+		generateBinaryTreeHelper(root, vs, 0);
 		return root;
 	}
 	private static void generateBinaryTreeHelper(TreeNode root, int [] vs, int index) {
-		int left = index * 2;
+		int left = index * 2 + 1;
 		int right = left + 1;
 
 		if (left >= vs.length) return;
 		else {
 			int vl = vs[left];
-			root.left = vl == -1 ? null : new TreeNode(vl);			
+			if (vl == -1) {
+				root.left = null;
+			}
+			else {
+				root.left = new TreeNode(vl);
+				root.left.parent = root;
+			}
 		}
 		
 		if (right >= vs.length) return;
 		else {
 			int vr = vs[right];
-			root.right = vr == -1 ? null : new TreeNode(vr);			
+			if (vr == -1) {
+				root.right = null;
+			}
+			else {
+				root.right = new TreeNode(vr);
+				root.right.parent = root;
+			}
 		}
 		
 		if (root.left != null) generateBinaryTreeHelper(root.left, vs, left);
 		if (root.right != null) generateBinaryTreeHelper(root.right, vs, right);
 	}
 	
+	/**
+	 * Generate a balanced binary search tree based on the given array. 
+	 * (!important: using '-1' to indicate null node)
+	 * 
+	 * @param int[] vs: an integer array
+	 * 
+	 * {4, 5, 5, 7, 2, 1, 3}
+	 * 
+	 * 			 4
+	 * 		   /  \
+	 *        2    5
+	 *       / \  / \
+	 *      1  3 5   7
+	 * */
+	public static TreeNode generateBinarySearchTree(int[] vs) {
+		if (vs == null || vs.length == 0) return null;
+		Arrays.sort(vs);
+		TreeNode root = generateBinarySearchTreeHelper(vs, 0, vs.length - 1);
+		return root;
+	}
+	private static TreeNode generateBinarySearchTreeHelper(int[] vs, int left, int right) {
+		if (left > right) return null;
+		int mid = left + (right - left) / 2;
+		if (vs[mid] != -1) {
+			TreeNode node = new TreeNode(vs[mid]);
+			node.left = generateBinarySearchTreeHelper(vs, left, mid - 1);
+			if (node.left != null) node.left.parent = node;
+			node.right = generateBinarySearchTreeHelper(vs, mid + 1, right);
+			if (node.right != null) node.right.parent = node;
+			return node;
+		}
+		return null;
+	}
+	
+	/**
+	 * Generate a not balanced binary search tree based on the given array. 
+	 * 
+	 * @param int[] vs: an integer array
+	 * 
+	 * {3, 5, 5, 7, 4, 1, 2}
+	 * 
+	 * 			 3
+	 * 		   /   \
+	 *        1     5
+	 *         \   / \
+	 *          2 5   7
+	 *           /
+	 *          4
+	 * */
+	public static TreeNode generateBinarySearchTreeNotBalanced(int[] vs) {
+		if (vs == null || vs.length == 0) return null;
+		TreeNode root = new TreeNode(vs[0]);
+		for (int i = 1; i < vs.length; i++) {
+			TreeNode runner = root;
+			int val = vs[i];
+			while (true) {
+				if (val <= runner.val) {
+					if (runner.left == null) {
+						runner.left = new TreeNode(val);
+						runner.left.parent = runner;
+						break;
+					}
+					else {
+						runner = runner.left;
+					}
+				}
+				else {
+					if (runner.right == null) {
+						runner.right = new TreeNode(val);
+						runner.right.parent = runner;
+						break;
+					}
+					else {
+						runner = runner.right;
+					}
+				}
+			}
+		}
+		return root;
+	}
+	
+	/**
+	 * Generate a complete binary search tree based on the given array. Array is already sorted 
+	 * 
+	 * @param int[] vs: an integer array
+	 * 
+	 * {1, 2, 3, 4, 5}
+	 * 
+	 * 			 4
+	 * 		   /   \
+	 *        2     5
+	 *       / \
+	 *      1   3 
+	 * */
 	public static TreeNode generateCompleteBinarySearchTree(int[] vs) {
 		if (vs == null || vs.length == 0) return null;
 		return generateCompleteBinarySearchTreeHelper(vs, 0, vs.length - 1);
@@ -108,26 +222,5 @@ public class TreeUtils {
 			System.out.println(root.val);
 		}
 		print(root.left, level + 1);
-	}
-	
-	public static void main(String [] args) {
-		// Test For generateBinaryTree
-		// int [] vs = {1, 2, 3, -1, 4, -1, 5};
-		/*
-		int [] vs = {-1, 5, 4, 8, 11, -1, 13, 4, 7, 2, -1, -1, -1, -1, -1, 1};
-		TreeNode root = generateBinaryTree(vs);
-		print(root);
-		*/
-		
-		// int[] vs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}; // , 5, 6, 7, 8, 9
-		
-		int N = 31;
-		int[] vs = new int[N];
-		for (int i = 1; i <= N; i++) {
-			vs[i - 1] = i;
-		}
-		
-		TreeNode root = generateCompleteBinarySearchTree(vs);
-		print(root);
 	}
 }
