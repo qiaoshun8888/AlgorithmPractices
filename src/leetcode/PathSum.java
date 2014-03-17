@@ -1,6 +1,7 @@
 package leetcode;
 
-import leetcode.BinaryTreePreorderTraversalNoRecursion.TreeNode;
+import myUtils.TreeUtils;
+import myUtils.datastructure.TreeNode;
 
 public class PathSum {
 
@@ -23,19 +24,21 @@ public class PathSum {
 	 * 
 	 * */
 	
-	static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
+	/**
+	 * Perfect solution
+	 * Author: Xin Zhou
+	 * 
+	 * */
+	public static boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) return false; // empty case
+        if (root.left == null && root.right == null) return sum == root.val; // base case
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
 
-		TreeNode(int x) {
-			val = x;
-		}
-	}
 	
 	private static boolean emptyRoot = true;
 	
-	public static boolean hasPathSum(TreeNode root, int sum) {
+	public static boolean hasPathSum2(TreeNode root, int sum) {
         if (root == null) {
             if (sum != 0) return false;
             if (emptyRoot) return false;
@@ -60,8 +63,9 @@ public class PathSum {
     }
 	
 	public static void main(String [] args) {
-		TreeNode root = new TreeNode(1);
-		root.left = new TreeNode(2);
-		System.out.println(hasPathSum(root, 1));
+		int[] vs = {5, 4, 8, 11, -1, 13, 4, 7, 2, -1, -1, -1, -1, -1, 4};
+		TreeNode root = TreeUtils.generateBinaryTree(vs);
+		TreeUtils.print(root);
+		System.out.println(hasPathSum(root, 22));
 	}
 }
