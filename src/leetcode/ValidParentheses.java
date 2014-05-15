@@ -19,7 +19,6 @@ public class ValidParentheses {
         Stack<Integer> stack = new Stack<Integer>();
         
         char [] cc = s.toCharArray();
-        
         for (char c : cc) {
         	switch(c) {
         		case '(':
@@ -41,7 +40,7 @@ public class ValidParentheses {
 	}
 	
 	public static void main(String[] args) {
-		String[] testCases = {"[", "]]", "((", "()[]{}", "([)]", "(]", "()" };
+		String[] testCases = {"[", "]]", "((", "()[]{}", "([)]", "(]", "()", "[({}){}()]" };
 		
 		ValidParentheses o = new ValidParentheses();
 		

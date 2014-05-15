@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Random;
+
 public class CopyListWithRandomPointer {
 
 	/**
@@ -17,8 +21,13 @@ public class CopyListWithRandomPointer {
 		RandomListNode(int x) {
 			this.label = x;
 		}
+		
+		@Override
+		public String toString() {
+			return "Node(" + label + ")";
+		}
 	}
-
+	
 	public RandomListNode copyRandomList(RandomListNode head) {
 		if (head == null) return null;
 		
@@ -60,6 +69,56 @@ public class CopyListWithRandomPointer {
 		return nHead;
 	}
 	
+	
+	static class Indexes {
+		int node_index;
+		int random_index;
+
+		Indexes(int node_index, int random_index) {
+			this.node_index = node_index;
+			this.random_index = random_index;
+		}
+		
+		@Override
+		public String toString() {
+			return "Index(" + node_index + ")  RandomIndex(" + random_index + ")";
+		}
+	}
+	public static RandomListNode copyRandomListByUsingHash(RandomListNode head) {
+		if (head == null) return null;
+		HashMap<RandomListNode, Indexes> map = new HashMap<RandomListNode, Indexes>();
+		
+		// First Iteration: put nodes and create index
+		RandomListNode runner = head;
+		int index = 0;
+		while (runner != null) {
+			map.put(runner, new Indexes(index++, -1));
+			runner = runner.next;
+		}
+		
+		// Second Iteration: find and assign random index
+		runner = head;
+		while (runner != null) {
+			if (runner.random != null) {
+				Indexes rand_ind = map.get(runner.random);
+				map.get(runner).random_index = rand_ind.node_index;				
+			}
+			runner = runner.next;
+		}
+		
+		// for test
+		for (Entry<RandomListNode, Indexes> entry : map.entrySet()) {
+			System.out.println(entry.getKey() + " |  " + entry.getValue());
+		}
+		
+		RandomListNode result = null;
+		for (int i = 0; i < map.size(); i++) {
+			
+		}
+		
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		/**
 		 * 1 -> 2 -> 3 -> 4 -> 5
@@ -91,5 +150,8 @@ public class CopyListWithRandomPointer {
 			System.out.print(node.label + "(" + (node.random == null ? "#" : node.random.label) + ")" + "  ");
 			node = node.next;
 		}
+		
+		
+//		copyRandomListByUsingHash(node1);
 	}
 }

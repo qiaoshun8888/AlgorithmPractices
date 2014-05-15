@@ -12,6 +12,7 @@ public class Question1 {
 	private static boolean[] used_stop;
 	
 	public static void read() throws IOException {
+//		BufferedReader br = new BufferedReader(new FileReader("/Users/johnqiao/Desktop/CS Career/algorithm practise/algorithm_practices/src/google/jam/q1_data.txt"));
 		BufferedReader br = new BufferedReader(new FileReader("/Users/johnqiao/Desktop/CS Career/algorithm practise/algorithm_practices/src/google/jam/q1_data2.txt"));
 	    try {	        
 	        int case_num = Integer.parseInt(br.readLine());
@@ -27,6 +28,11 @@ public class Question1 {
 	        	int length = Integer.parseInt(temp[1]);
 	        	String[] initial = br.readLine().split(" ");
 	        	String[] require = br.readLine().split(" ");
+	        	
+	        	if (match(initial, require)) {
+	        		System.out.println("Case_ID: #" + case_id + " (0) \t Done!");
+	        		break;
+	        	}
 	        	
 	        	process(initial, require, length);
 	        	 

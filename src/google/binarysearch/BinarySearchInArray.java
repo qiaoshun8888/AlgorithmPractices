@@ -20,6 +20,7 @@ public class BinarySearchInArray {
 	public static int binarySearch(int [] vs, int target) {
 		return binarySearchHelper(vs, 0, vs.length - 1, target);
 	}
+	
 	private static int binarySearchHelper(int [] vs, int left, int right, int target) {
 		if (left <= right) {
 			int mid = left + (right - left) / 2;

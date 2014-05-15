@@ -18,6 +18,7 @@ public class PalindromeNumber {
 		 * 
 		 * */
 		
+		
 		// tricky part, we should convert x to long.
 		// When x equals Integer.MIN_VALUE we can not get the absolute value by using -x
 		long y = Math.abs((long)x);
