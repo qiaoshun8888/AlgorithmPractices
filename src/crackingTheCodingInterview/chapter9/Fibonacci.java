@@ -27,6 +27,19 @@ public class Fibonacci {
 		return result;
 	}
 	
+	public static int getKthFibonacciNumber2(int k) {
+        if (k == 0) return 0;
+		int[] vs = { 1, 2 };
+		if (k < 3)
+			return vs[(k - 1) % 2];
+        int cur = 2;
+		while (cur < k) {
+            vs[cur%2] = vs[0] + vs[1];
+			cur++;
+        }
+        return vs[cur%2];
+    }
+
 	// Time: O(2^n)  Space: O(n)
 	public static int getKthFibonacciNumberRecursively(int k) {
 		calledTimes++;
@@ -45,7 +58,6 @@ public class Fibonacci {
 		return vs[k];
 	}
 	
-	
 	public static void main(String [] args) {
 		System.out.println(Fibonacci.getKthFibonacciNumber(40) + " calledTimes: " + calledTimes);
 		calledTimes = 0;
@@ -54,5 +66,7 @@ public class Fibonacci {
 		calledTimes = 0;
 		
 		System.out.println(Fibonacci.getKthFibonacciNumberRecursivelyImprove(40) + " calledTimes: " + calledTimes);
+
+		System.out.println(Fibonacci.getKthFibonacciNumber2(40));
 	}
 }
