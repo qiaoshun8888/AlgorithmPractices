@@ -53,6 +53,7 @@ public class FourSum {
 			Set<List<Integer>> set) {
 		int left = startIndex, right = num.length - 1;
 		while (left < right) {
+			callTimes++;
 			int sum = num[left] + num[right];
 			if (sum == target) {
 				List<Integer> list = new ArrayList<Integer>();

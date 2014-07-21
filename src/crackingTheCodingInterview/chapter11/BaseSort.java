@@ -2,7 +2,7 @@ package crackingTheCodingInterview.chapter11;
 
 public abstract class BaseSort {
 
-	private String alg_name;
+	private final String alg_name;
 	protected int [] vs;
 	protected int called_times;
 	
@@ -23,6 +23,8 @@ public abstract class BaseSort {
 	}
 	
 	protected void swap(int [] vs, int i, int j) {
+		if (i == j)
+			return;
 		vs[i] ^= vs[j]; vs[j] ^= vs[i]; vs[i] ^= vs[j];
 	}
 }
