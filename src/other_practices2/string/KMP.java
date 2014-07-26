@@ -4,8 +4,25 @@ public class KMP {
 
 	/*
 	 * KMP
+	 * e.g.
+	 *  pattern: a b a b c
+	 *	text: a b a b a b c
+	 *
+	 *     a b a b a b c
+	 *     a b a b(c)
+	 *             ^ k = 4 (matched 4 chars), i = 5
+	 *     search in p[k - 1] for previous longest match, 
+	 *     until p[k - 1] = t[i] ('a' = 'a').
+	 *	   Finally, we get k = 2.
+	 * 
+	 *     Then the search pattern becomes this:
+	 *     
+	 *     a b a b a b c
+	 *         a b(a)b c
+	 *             ^ k = 2 (matched 2 chars), i = 5
+	 *     
+	 *     Keep going, we get k = len(pattern), found the pattern in text.
 	 */
-
 	public String kmp(String text, String pattern) {
 		if (text == null || pattern == null)
 			return null;
