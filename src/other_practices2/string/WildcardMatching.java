@@ -56,6 +56,16 @@ public class WildcardMatching {
 		}
 	}
 
+	/*
+	 * Idea: The pattern string can be
+	 * something+'*'+something+'*'+something+`*'+...+'
+	 * *'+something+'*'+something. We first deal with the matching of the head
+	 * and tail (before the first `*` and after the last `*'). Then the pattern
+	 * string left is '*'+something+'*'+something+`*'+...+'*'+something+'*', for
+	 * which, we use greedy algorithm to find the first appearance of each
+	 * something. So the total time required is O(m*n).
+	 */
+
 	// Greedy Algorithm.
 	public boolean isMatch2(String s, String p) {
 		if (s == null || p == null)
@@ -139,8 +149,8 @@ public class WildcardMatching {
 		// is not enough characters in s that match the pattern p.
 		while (i <= s.length() - p.length()) {
 			// find the starting point.
-			// TODO(sqiao): why not i <= s.length() - p.length()
-			while (i < s.length() && s.charAt(i) != p.charAt(0)
+			// i <= s.length() - p.length() or i < s.length()
+			while (i <= s.length() - p.length() && s.charAt(i) != p.charAt(0)
 					&& p.charAt(0) != '?')
 				i++;
 			// if didn't find the starting point.
