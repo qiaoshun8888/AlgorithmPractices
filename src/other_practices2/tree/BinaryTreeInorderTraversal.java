@@ -54,6 +54,62 @@ public class BinaryTreeInorderTraversal {
 		return result;
 	}
 
+	public List<Integer> inorderTraversal2(TreeNode root) {
+		List<Integer> result = new ArrayList<Integer>();
+		if (root == null)
+			return result;
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		pushLeftChildren(stack, root);
+		while (!stack.isEmpty()) {
+			TreeNode node = stack.pop();
+			result.add(node.val);
+			if (node.right != null) {
+				pushLeftChildren(stack, node.right);
+			}
+		}
+		return result;
+	}
+
+	private void pushLeftChildren(Stack<TreeNode> stack, TreeNode node) {
+		while (node != null) {
+			stack.push(node);
+			node = node.left;
+		}
+	}
+
+	public List<Integer> inorderTraversalMorris(TreeNode root) {
+		List<Integer> result = new ArrayList<Integer>();
+		if (root == null)
+			return result;
+		TreeNode pre = null;
+		TreeNode cur = root;
+		while (cur != null) {
+			if (cur.left == null) {
+				result.add(cur.val);
+				cur = cur.right;
+			} else {
+				// Find the inorder predecessor of current.
+				pre = cur.left;
+				while (pre.right != null && pre.right != cur)
+					pre = pre.right;
+				
+				// Make the current as right child of its inorder predecessor. 
+				if (pre.right == null) {
+					pre.right = cur;
+					cur = cur.left;
+				}
+				// Reverse the changes made in if part to restore the original
+				// tree. i.e, fix the right child of predecessor.
+				else {
+					pre.right = null;
+					result.add(cur.val);
+					cur = cur.right;
+				} // End of if condition pre.right == null
+			} // End of if condition current.left == null
+		} // End of while
+		return result;
+	}
+
 	public static void main(String[] args) {
 		/*
 		 * 3 9 20 2 8 15 7
@@ -80,6 +136,16 @@ public class BinaryTreeInorderTraversal {
 
 		BinaryTreeInorderTraversal o = new BinaryTreeInorderTraversal();
 		List<Integer> list = o.inorderTraversal(root);
+		for (int v : list) {
+			System.out.print(v + " ");
+		}
+		System.out.println();
+		list = o.inorderTraversal2(root);
+		for (int v : list) {
+			System.out.print(v + " ");
+		}
+		System.out.println();
+		list = o.inorderTraversalMorris(root);
 		for (int v : list) {
 			System.out.print(v + " ");
 		}
