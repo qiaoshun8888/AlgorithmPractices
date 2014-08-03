@@ -29,7 +29,7 @@ public class TreeUtils {
 	 * 
 	 * 			 0
 	 * 		   /  \
-	 *        1    2
+	 *        1    2 
 	 *       / \  / \
 	 *      3  # 4   #
 	 * */
