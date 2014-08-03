@@ -12,27 +12,26 @@ public class ConstructBinaryTtreeFromPreorderAndInorderTraversal {
 	 * Note: You may assume that duplicates do not exist in the tree.
 	 */
 
+	private static int preIndex = 0;
+
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
 		if (preorder == null || inorder == null
 				|| preorder.length != inorder.length)
 			return null;
-		return build(preorder, 0, preorder.length - 1, inorder, 0,
+		preIndex = 0;
+		return build(preorder, inorder, 0,
 				inorder.length - 1);
 	}
 
-	private TreeNode build(int[] preorder, int ps, int pe, int[] inorder,
-			int is, int ie) {
-		if (ie < is || pe < ps)
+	private TreeNode build(int[] preorder, int[] inorder, int inStart, int inEnd) {
+		if (inEnd < inStart)
 			return null;
-		TreeNode node = new TreeNode(preorder[ps]);
-		if (ps == pe && is == ie)
+		TreeNode node = new TreeNode(preorder[preIndex++]);
+		if (inStart == inEnd)
 			return node;
-		int inIndex = searchIndex(inorder, is, ie, node.val);
-		int numInLeft = inIndex - ps + 1;
-		node.left = build(preorder, ps + 1, pe + numInLeft, inorder, is,
-				inIndex - 1);
-		node.right = build(preorder, ps + numInLeft + 1, pe, inorder,
-				inIndex + 1, ie);
+		int rootIndex = searchIndex(inorder, inStart, inEnd, node.val);
+		node.left = build(preorder, inorder, inStart, rootIndex - 1);
+		node.right = build(preorder, inorder, rootIndex + 1, inEnd);
 		return node;
 	}
 
@@ -48,8 +47,8 @@ public class ConstructBinaryTtreeFromPreorderAndInorderTraversal {
 	public static void main(String[] args) {
 		// int[] preorder = { 4, 2, 1, 3, 6, 5, 7 };
 		// int[] inorder = { 1, 2, 3, 4, 5, 6, 7 };
-		int[] preorder = { 1, 2 };
-		int[] inorder = { 2, 1 };
+		int[] preorder = { 1, 2 ,3,4};
+		int[] inorder = { 1,2,3,4};
 		ConstructBinaryTtreeFromPreorderAndInorderTraversal o = new ConstructBinaryTtreeFromPreorderAndInorderTraversal();
 		TreeNode root = o.buildTree(preorder, inorder);
 		TreeUtils.print(root);
