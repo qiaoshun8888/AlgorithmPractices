@@ -1,55 +1,63 @@
 package other_practices2.tree;
 
+import myUtils.TreeUtils;
+import myUtils.datastructure.TreeNode;
+
 
 public class BinaryTreeMaximumPathSum {
 
-	static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
+	/**
+	 * Given a binary tree, find the maximum path sum.
 
-		TreeNode(int x) {
-			val = x;
-		}
-	}
+		The path may start and end at any node in the tree.
 
-	static int max = Integer.MIN_VALUE;
+		For example:
+		Given the below binary tree,
+
+		       1
+		      / \
+		     2   3
+		Return 6.
+	 */
+
+	private static int max = Integer.MIN_VALUE;
 
 	public int maxPathSum(TreeNode root) {
+		if (root == null) return 0;
 		traverse(root);
 		return max;
 	}
 
 	private int traverse(TreeNode node) {
-		if (node == null)
-			return 0;
-		int left = traverse(node.left);
-		int right = traverse(node.right);
-		int cur = node.val;
-		if (left > 0)
-			cur += left;
-		if (right > 0)
-			cur += right;
-		max = Math.max(cur, max);
-		return Math.max(left, right) > 0 ? Math.max(left, right) + node.val
-				: node.val;
+		int left = 0, right = 0, sum = node.val;
+		if (node.left != null) {
+			left = traverse(node.left);
+		}
+		if (node.right != null) {
+			right = traverse(node.right);
+		}
+		// case 1: left + cur + right
+		if (left > 0 && right > 0) {
+			sum += left + right;
+		}
+		// case 2: left + cur
+		else if (left > 0) {
+			sum += left;
+		}
+		// case 3: right + cur
+		else if (right > 0) {
+			sum += right;
+		}
+		max = Math.max(max, sum);
+		if (left < 0 && right < 0) return node.val;
+		return left > right ? node.val + left : node.val + right;
 	}
 
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode(4);
-		TreeNode node1 = new TreeNode(-2);
-		TreeNode node2 = new TreeNode(3);
-		TreeNode node3 = new TreeNode(1);
-		TreeNode node4 = new TreeNode(3);
-		TreeNode node5 = new TreeNode(-1);
-		TreeNode node6 = new TreeNode(2);
-		root.left = node1;
-		root.right = node2;
-		node1.left = node3;
-		node1.right = node4;
-		node2.left = node5;
-		node2.right = node6;
+		int[] vs = {8,9,-6,-1,-1,5,9};
+		TreeNode root = TreeUtils.generateBinaryTree(vs);
+		TreeUtils.print(root);
 		BinaryTreeMaximumPathSum o = new BinaryTreeMaximumPathSum();
-		System.out.println(o.maxPathSum(root));
+		System.out.println("max: " + o.maxPathSum(root));
 	}
 }
