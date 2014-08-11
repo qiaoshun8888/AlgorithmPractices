@@ -23,7 +23,7 @@ public class LargestRectangleInHistogram {
 			if (stack.isEmpty() || v >= height[stack.peek()]) {
 				// We increase i here so that when the current bar is less than
 				// the one on the top of the stack, i won't be increased. Then
-				// after we poped the old top one we can continue to check if
+				// after we popped the old top one we can continue to check if
 				// the new top one if greater or less than current bar. We stop
 				// doing this util we find the bar in the stack that less than
 				// current bar.
@@ -31,7 +31,7 @@ public class LargestRectangleInHistogram {
 			}
 			else {
 				topIndex = stack.pop();
-				// Use the poped one as the minimum bar to calculate the area.
+				// Use the popped one as the minimum bar to calculate the area.
 				// The area is equal: (the right index of the bar that less than
 				// current one - the left index of the bar that less than
 				// current one - 1) * the height of the current minimum bar.
@@ -51,8 +51,9 @@ public class LargestRectangleInHistogram {
 	}
 
 	public static void main(String[] args) {
-		int[] height = { 6, 2, 5, 4, 5, 1, 6 };
+		// int[] height = { 6, 2, 5, 4, 5, 1, 6 };
 		// int[] height = { 2, 1, 5, 6, 2, 3 };
+		int[] height = { 6, 2, 4, 3, 4, 2, 6 };
 		LargestRectangleInHistogram o = new LargestRectangleInHistogram();
 		System.out.println(o.largestRectangleArea(height));
 	}
