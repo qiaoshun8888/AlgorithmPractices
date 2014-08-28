@@ -36,10 +36,10 @@ public class GasStation {
 	}
 
 	public static void main(String[] args) {
-		// int[] gas = { 5, 1, 2, 3, 10, 6 };
-		// int[] cost = { 4, 3, 1, 2, 8, 8 };
-		int[] gas = { 5 };
-		int[] cost = { 4 };
+		int[] gas = { 5, 1, 2, 3, 10, 6 };
+		int[] cost = { 4, 3, 1, 2, 8, 8 };
+		//		int[] gas = { 5 };
+		//		int[] cost = { 4 };
 		GasStation o = new GasStation();
 		System.out.println(o.canCompleteCircuit(gas, cost));
 	}

@@ -20,7 +20,7 @@ public class ReverseNodesInKGroup {
 	 * 
 	 * For k = 3, you should return: 3->2->1->4->5
 	 */
-	
+
 	static class ListNode {
 		int val;
 		ListNode next;
