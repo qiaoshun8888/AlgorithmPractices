@@ -17,8 +17,10 @@ public class RegularExpressionMatching {
 	 * isMatch("aaa","aa") → false isMatch("aa", "a*") → true isMatch("aa",
 	 * ".*") → true isMatch("ab", ".*") → true isMatch("aab", "c*a*b") → true
 	 */
+	public int counter = 0;
 
 	public boolean isMatch(String s, String p) {
+		counter++;
 		if (p.length() == 0)
 			return s.length() == 0;
 		// p's length 1 is special case
@@ -100,15 +102,17 @@ public class RegularExpressionMatching {
 				{ "bbbba", ".*a*a" }, // 12
 				{ "a", "ab*a" }, // 13
 				{ "aaba", "ab*a*c*a" }, // 14
+				{"aaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*c"}, // 15
 		};
 		boolean[] expected_result = { false, true, false, true, true, true,
-				true, false, true, true, true, true, true, false, false };
+				true, false, true, true, true, true, true, false, false, false };
 		RegularExpressionMatching o = new RegularExpressionMatching();
 		for (int i = 0; i < test_cases.length; i++) {
 			String[] s_p = test_cases[i];
-			boolean result = o.isMatch2(s_p[0], s_p[1]);
+			boolean result = o.isMatch(s_p[0], s_p[1]);
 			System.out.println("TEST CASE [" + i + "]: "
 					+ (result == expected_result[i]));
 		}
+		System.out.println(o.counter);
 	}
 }

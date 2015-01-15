@@ -3,6 +3,8 @@ package other_practices2.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class GrayCode {
 
@@ -45,12 +47,45 @@ public class GrayCode {
 		return result;
 	}
 
+	static class MyInteger implements Comparable<MyInteger>{
+		public int i = 0;
+		public MyInteger(int i) {
+			this.i = i;
+		}
+		public void add(int i) {
+			this.i += i;
+		}
+
+		@Override
+		public int compareTo(MyInteger arg0) {
+			// TODO Auto-generated method stub
+			return this.i - arg0.i;
+		}
+
+		@Override
+		public String toString() {
+			return i + "";
+		}
+	}
+
 	public static void main(String[] args) {
-		int n = 2;
+		int n = 4;
 		GrayCode o = new GrayCode();
 		for (int v : o.grayCode(n)) {
-			System.out.println(v);
+			//			System.out.println(Integer.toBinaryString(v));
 		}
+
+		MyInteger mi = new MyInteger(2);
+
+		System.out.println(mi.hashCode());
+
+		Queue<MyInteger> l = new PriorityQueue<MyInteger>();
+		l.add(mi);
+		System.out.println(l);
+		l.add(mi);
+		System.out.println(l);
+		mi.add(100);
+		System.out.println(l);
 	}
 
 }

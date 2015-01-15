@@ -20,7 +20,7 @@ Given n = 3, your program should return all 5 unique BST's shown below.
     /     /       \                 \
    2     1         2                 3
 confused what "{1,#,2,3}" means?
-*/
+	 */
 
 	public List<TreeNode> generateTrees(int n) {
 		return recursiveGenerateTrees(1, n);
@@ -52,19 +52,19 @@ confused what "{1,#,2,3}" means?
 		return result;
 	}
 
-	public List<TreeNode> generateTreesDPS(int n) {
-		return dps(1, n);
+	public List<TreeNode> generateTreesDFS(int n) {
+		return dfs(1, n);
 	}
 
-	private List<TreeNode> dps(int start, int end) {
+	private List<TreeNode> dfs(int start, int end) {
 		List<TreeNode> list = new ArrayList<TreeNode>();
 		if (end < start) {
 			list.add(null);
 			return list;
 		}
 		for (int i = start; i <= end; i++) {
-			List<TreeNode> leftSubtrees = dps(start, i - 1);
-			List<TreeNode> rightSubtrees = dps(i + 1, end);
+			List<TreeNode> leftSubtrees = dfs(start, i - 1);
+			List<TreeNode> rightSubtrees = dfs(i + 1, end);
 			for (TreeNode leftSubtree : leftSubtrees) {
 				for (TreeNode rightSubtree : rightSubtrees) {
 					TreeNode node = new TreeNode(i);
@@ -79,7 +79,8 @@ confused what "{1,#,2,3}" means?
 
 	public static void main(String[] args) {
 		UniqueBinarySearchTreesII o = new UniqueBinarySearchTreesII();
-		List<TreeNode> result = o.generateTrees(3);
+		List<TreeNode> result = o.generateTrees(12);
+		// System.out.println("Finished");
 		for (TreeNode node : result) {
 			TreeUtils.print(node);
 			System.out.println();

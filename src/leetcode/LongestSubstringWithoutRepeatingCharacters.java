@@ -15,19 +15,19 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
 	public int lengthOfLongestSubstring(String s) {
 		if (s == null || s.length() == 0) return 0;
-		
+
 		char[] cc = s.toCharArray();
-		
+
 		// cdadcabcdabcbb
 		int i = 0, j = 0, maxCount = 0;
 		boolean [] b = new boolean[26];
-		
+
 		while (i < cc.length) {
-			int v = (int)cc[i] - 97;
+			int v = cc[i] - 97;
 			if (b[v]) {
 				maxCount = Math.max(maxCount, i - j);
 				while (cc[i] != cc[j]) {
-					b[(int)cc[j] - 97] = false;
+					b[cc[j] - 97] = false;
 					j++;
 				}
 				j++;
@@ -37,13 +37,15 @@ public class LongestSubstringWithoutRepeatingCharacters {
 			}
 			i++;
 		}
-		
+
 		maxCount = Math.max(maxCount, i - j);
-		
+
 		return maxCount;
 	}
-	
+
 	public static void main(String[] args) {
+		// String s = "qopubjguxhxdipfzwswybgfylqvjzhar";
+		// String s = "hnwnkuewhsqmgbbuqcljjivswmdkqtbxixmvtrrbljptnsnfwzqfjmafadrrwsofsbcnuvqhffbsaqxwpqcac";
 		String s = "qopubjguxhxdipfzwswybgfylqvjzhar";
 		LongestSubstringWithoutRepeatingCharacters o = new LongestSubstringWithoutRepeatingCharacters();
 		System.out.println("Longest Substring length is: " + o.lengthOfLongestSubstring(s));
